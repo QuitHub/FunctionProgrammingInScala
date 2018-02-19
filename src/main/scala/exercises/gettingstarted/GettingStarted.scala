@@ -16,4 +16,12 @@ object GettingStarted {
     loop(n, 0, 1)
   }
 
+  def isSorted[A](as: Array[A], ordered: (A,A) => Boolean): Boolean = {
+    if(as.length == 2)
+      if (ordered(as(0), as(1))) true
+      else false
+    else if (ordered(as(0), as(1)))
+      isSorted(as.tail, ordered)
+    else false
+  }
 }
